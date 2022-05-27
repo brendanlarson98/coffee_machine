@@ -44,7 +44,8 @@ while vend:                                 # While we are vending, we get our o
         cmf.print_report(resources)
         continue
     
-    has_resources = cmf.check_resources(resources, drinks[choice]) 
+    drink_choice = drinks.get(choice)
+    has_resources = cmf.check_resources(resources, drink_choice) 
     if not has_resources:                   #if we do not have our resources, we should see if we want to refill any
         is_refill = True
         while is_refill:
@@ -57,9 +58,9 @@ while vend:                                 # While we are vending, we get our o
             else:
                 print("Please enter a valid input (y/n).") #
         continue                            # If we have refilled or run out of resources, then we want to start our vending process over.
-
-    if cmf.charge_amount(resources, drinks[choice]):            # perform the operation of getting money. Inside this function, we also test if we have received the right amount.
-        cmf.subtract_resources(resources, drinks[choice])           # If we have, then we subtract resources, add our money.
-        cmf.refill_resource(resources, 'money', drinks[choice]['money'])
+    
+    if cmf.charge_amount(resources, drink_choice):            # perform the operation of getting money. Inside this function, we also test if we have received the right amount.
+        cmf.subtract_resources(resources, drink_choice)           # If we have, then we subtract resources, add our money.
+        cmf.refill_resource(resources, 'money', drink_choice['money'])
         print(f"Enjoy your {choice}!\n")
 
