@@ -1,4 +1,4 @@
-import coffee_machine_functions as cmf
+import PP_coffee_machine_functions as cmf
 
 resources = {                               # here we have what resources our coffee machine currently has
     'water': 300,
